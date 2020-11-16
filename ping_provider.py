@@ -13,7 +13,7 @@ timestr = time.strftime("%Y%m%d-%H%M%S")
 
 with open('ping_{}'.format(timestr), 'w') as f:
     while True:
-        p = subprocess.Popen(['ping','8.8.8.8', '-c', '1'], stdout=subprocess.PIPE, universal_newlines = 1)
+        p = subprocess.Popen(['ping','8.8.8.8', '-c', '1'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines = 1)
 
 
         for line in p.stdout:
