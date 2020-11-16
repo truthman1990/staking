@@ -10,7 +10,7 @@ downtime = 0
 
 for f in args.file:
     for line in f:
-        sentence = bool(re.search(', 1 * received', line))
+        sentence = bool(re.search(', 1 ?\S* received', line))
 
         if sentence:
             uptime = uptime + 5
