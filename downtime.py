@@ -1,4 +1,5 @@
 import argparse
+import re
 
 parser = argparse.ArgumentParser()
 parser.add_argument('file', type=argparse.FileType('r'), nargs='+')
@@ -9,7 +10,9 @@ downtime = 0
 
 for f in args.file:
     for line in f:
-        if "1 packets received" in line:
+        sentence = bool(re.search(', 1 .* received', line))
+
+        if sentence:
             uptime = uptime + 5
         else:
             downtime = downtime + 5

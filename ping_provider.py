@@ -15,7 +15,7 @@ with open('ping_{}'.format(timestr), 'w') as f:
         p = subprocess.Popen(['ping','8.8.8.8', '-c', '1'], stdout=subprocess.PIPE, universal_newlines = 1)
 
         for line in p.stdout:
-            if "transmitted" in line:
+            if "transmitted" in line or "unreachable" in line:
                 f.write(line) 
                 f.flush()
 
