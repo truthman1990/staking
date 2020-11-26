@@ -5,6 +5,7 @@
 import subprocess
 import time
 import re
+from datetime import datetime
 
 uptime = 0
 downtime = 0
@@ -18,6 +19,9 @@ with open('ping_{}'.format(timestr), 'w') as f:
 
         for line in p.stdout:
             unreachable = bool(re.search('.* unreachable', line))
+            dateTimeObj = datetime.now().replace(microsecond=0)
+            line = str(dateTimeObj) + ' | ' + line
+
             
             if "transmitted" in line or unreachable:
                 f.write(line) 

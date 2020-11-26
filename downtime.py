@@ -1,5 +1,6 @@
 import argparse
 import re
+import datetime
 
 parser = argparse.ArgumentParser()
 parser.add_argument('file', type=argparse.FileType('r'), nargs='+')
@@ -19,7 +20,9 @@ for f in args.file:
 
 percent_down = downtime/uptime * 100
 
-print("total uptime is {} seconds".format(uptime))
-print("total downtime is {} seconds".format(downtime))
+#uptime_minutes = str(datetime.timedelta(seconds=uptime))
+
+print("total uptime is {}".format(str(datetime.timedelta(seconds=uptime))))
+print("total downtime is {}".format(str(datetime.timedelta(seconds=downtime))))
 print("downtime % = {:.2f}".format(percent_down))
 
